@@ -4,11 +4,14 @@ public abstract class MilitaryUnit {
     private int hitPoints;
     private int damage;
     private boolean isArmor;
+    private boolean isShield=true;
+
 
     public MilitaryUnit(int hitPoints, int damage, boolean isArmor) {
         this.hitPoints = hitPoints;
         this.damage = damage;
         this.isArmor = isArmor;
+
     }
 
     public int doDamage() {
@@ -16,8 +19,8 @@ public abstract class MilitaryUnit {
     }
 
     public void sufferDamage(int damage) {
-        if (this.getClass().getSimpleName().equals("Swordsman") && isArmor == true) {
-            isArmor = false;
+        if (isShield == true && this.getClass().getSimpleName().equals("Swordsman")) {
+            isShield = false;
         } else if (isArmor) {
             this.hitPoints -= damage / 2;
         } else this.hitPoints -= damage;
