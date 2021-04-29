@@ -4,7 +4,8 @@ public abstract class MilitaryUnit {
     private int hitPoints;
     private int damage;
     private boolean isArmor;
-    private boolean isShield=true;
+    private boolean isShield = true;
+    private boolean isHeavyCavalry = true;
 
 
     public MilitaryUnit(int hitPoints, int damage, boolean isArmor) {
@@ -15,6 +16,11 @@ public abstract class MilitaryUnit {
     }
 
     public int doDamage() {
+        if (isHeavyCavalry == true && this.getClass().getSimpleName().equals("HeavyCavalry")) {
+            this.isHeavyCavalry = false;
+            this.damage = this.damage / 3;
+            return 60;
+        }
         return this.damage;
     }
 
